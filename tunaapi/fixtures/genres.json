@@ -1,0 +1,26 @@
+[
+    {
+        "model": "tunaapi.genre",
+        "pk": 1,
+        "fields": {
+            "name": "Pop",
+            "description": "Popular music is a genre of music that produces the most hits, a hit being a song or recording that sells many copies."
+        }
+    },
+    {
+        "model": "tunaapi.genre",
+        "pk": 2,
+        "fields": {
+            "name": "Rock",
+            "description": "Rock music is a genre that evolved from 1940s and 1950s rock and roll, and includes a diverse range of subgenres."
+        }
+    },
+    {
+        "model": "tunaapi.genre",
+        "pk": 3,
+        "fields": {
+            "name": "Hip-Hop",
+            "description": "Hip-Hop is a culture and art movement that emerged in the Bronx in New York City during the early 1970s."
+        }
+    }
+]

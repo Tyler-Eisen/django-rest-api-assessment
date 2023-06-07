@@ -1,0 +1,32 @@
+[
+  {
+    "model": "tunaapi.artist",
+    "pk": 1,
+    "fields": {
+      "name": "Queen",
+      "age": 50,
+      "bio": "A British rock band",
+      "song_count": 0
+    }
+  },
+  {
+    "model": "tunaapi.artist",
+    "pk": 2,
+    "fields": {
+      "name": "Led Zeppelin",
+      "age": 52,
+      "bio": "A British rock band formed in London",
+      "song_count": 0
+    }
+  },
+  {
+    "model": "tunaapi.artist",
+    "pk": 3,
+    "fields": {
+      "name": "John Lennon",
+      "age": 40,
+      "bio": "A British musician and peace activist",
+      "song_count": 0
+    }
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "model": "tunaapi.song",
+    "pk": 1,
+    "fields": {
+      "title": "Bohemian Rhapsody",
+      "artist": 1,
+      "album": "A Night at the Opera",
+      "length": 354,
+      "genres": [1]
+    }
+  },
+  {
+    "model": "tunaapi.song",
+    "pk": 2,
+    "fields": {
+      "title": "Stairway to Heaven",
+      "artist": 2,
+      "album": "Led Zeppelin IV",
+      "length": 482,
+      "genres": [2]
+    }
+  },
+  {
+    "model": "tunaapi.song",
+    "pk": 3,
+    "fields": {
+      "title": "Imagine",
+      "artist": 3,
+      "album": "Imagine",
+      "length": 183,
+      "genres": [1, 3]
+    }
+  }
+]
