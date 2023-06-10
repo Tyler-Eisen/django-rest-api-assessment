@@ -1,7 +1,8 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from tunaapi.models import Artist
+from tunaapi.models import Artist, Song
+from tunaapi.serializers import SongSerializer
 
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,7 +19,13 @@ class ArtistView(ViewSet):
         """
         artist = Artist.objects.get(pk=pk)
         serializer = ArtistSerializer(artist)
-        return Response(serializer.data)
+        
+        songs = artist.song_set.all()
+        song_serializer = SongSerializer(songs, many=True)
+        data = serializer.data
+        data['songs'] = song_serializer.data
+
+        return Response(data)
       
     def list(self, request):
         """Handle GET requests to get all Artists

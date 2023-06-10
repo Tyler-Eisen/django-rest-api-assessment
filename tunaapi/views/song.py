@@ -5,12 +5,7 @@ from rest_framework import serializers, status
 from tunaapi.views.artist import ArtistSerializer
 from tunaapi.views.genre import GenreSerializer
 from tunaapi.models import Song, Artist, Genre
-
-
-class SongSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Song
-        fields = ('id', 'artist', 'genres', 'title', 'album', 'length')
+from tunaapi.serializers import SongSerializer
 
 class SongView(ViewSet):
 
