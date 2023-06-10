@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import serializers, status
 from tunaapi.models import Song, Artist, Genre
+from tunaapi.serializers import SongSerializer
 
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,8 +20,15 @@ class GenreView(ViewSet):
         """
         genre = Genre.objects.get(pk=pk)
         serializer = GenreSerializer(genre)
-        return Response(serializer.data)
-      
+        
+        songs = Song.objects.filter(genres__id=pk)
+        song_serializer = SongSerializer(songs, many=True)
+
+        data = serializer.data
+        data['songs'] = song_serializer.data
+        
+        return Response(data)
+ 
     def list(self, request):
         """Handle GET requests to get all Genres
         

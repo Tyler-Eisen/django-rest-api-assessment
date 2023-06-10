@@ -22,6 +22,7 @@ class ArtistView(ViewSet):
         
         songs = artist.song_set.all()
         song_serializer = SongSerializer(songs, many=True)
+        
         data = serializer.data
         data['songs'] = song_serializer.data
 
