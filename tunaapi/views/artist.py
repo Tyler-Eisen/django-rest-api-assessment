@@ -1,13 +1,16 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from django.db.models import Count
 from rest_framework import serializers, status
 from tunaapi.models import Artist, Song
 from tunaapi.serializers import SongSerializer
 
 class ArtistSerializer(serializers.ModelSerializer):
+    song_count = serializers.IntegerField(default=None)
     class Meta:
         model = Artist
         fields = ('id', 'name', 'age', 'bio', 'song_count')
+        depth = 1
 
 class ArtistView(ViewSet):
   
@@ -17,7 +20,7 @@ class ArtistView(ViewSet):
         Returns:
             Response -- JSON serialized Artist
         """
-        artist = Artist.objects.get(pk=pk)
+        artist = Artist.objects.annotate(song_count=Count('song')).get(pk=pk)
         serializer = ArtistSerializer(artist)
         
         songs = artist.song_set.all()
@@ -42,8 +45,7 @@ class ArtistView(ViewSet):
         artist = Artist(
             name=request.data["name"],
             age=request.data["age"],
-            bio=request.data["bio"],
-            song_count=request.data["song_count"]
+            bio=request.data["bio"]
         )
         artist.save()
 
