@@ -37,7 +37,7 @@ class ArtistView(ViewSet):
         Returns:
             Response -- JSON serialized list of Artists
         """
-        artists = Artist.objects.all()
+        artists = Artist.objects.annotate(song_count=Count('song'))
         serializer = ArtistSerializer(artists, many=True)
         return Response(serializer.data)
     
