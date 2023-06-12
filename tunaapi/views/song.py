@@ -6,6 +6,8 @@ from tunaapi.views.artist import ArtistSerializer
 from tunaapi.views.genre import GenreSerializer
 from tunaapi.models import Song, Artist, Genre
 from tunaapi.serializers import SongSerializer
+from django.db.models import Count
+
 
 class SongView(ViewSet):
 
@@ -21,7 +23,7 @@ class SongView(ViewSet):
         data = serializer.data
 
         # Retrieve artist details
-        artist = Artist.objects.get(pk=song.artist_id)
+        artist = Artist.objects.annotate(song_count=Count('song')).get(pk=song.artist_id)
         artist_serializer = ArtistSerializer(artist)
         data['artist'] = artist_serializer.data
 

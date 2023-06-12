@@ -10,7 +10,7 @@ class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = ('id', 'name', 'age', 'bio', 'song_count')
-        depth = 1
+        depth = 2
 
 class ArtistView(ViewSet):
   
@@ -62,7 +62,6 @@ class ArtistView(ViewSet):
       artist.name = request.data.get("name", artist.name)
       artist.age = request.data.get("age", artist.age)
       artist.bio = request.data.get("bio", artist.bio)
-      artist.song_count = request.data.get("song_count", artist.song_count)
       artist.save()
       
       serializer = ArtistSerializer(artist)
